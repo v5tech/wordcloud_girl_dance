@@ -12,7 +12,7 @@ from PIL import Image
 from wordcloud import WordCloud
 
 # 读取数据
-with open('./barrages.txt') as f:
+with open('./barrages.txt', encoding='utf-8') as f:
     data = f.read()
 # 文本预处理  去除一些无用的字符   只提取出中文出来
 new_data = re.findall('[\u4e00-\u9fa5]+', data, re.S)
@@ -58,4 +58,5 @@ for num in range(88, 889):
     plt.axis('off')
     word_cloud_name = path + 'wordcloud_{}.png'.format(num)
     my_cloud.to_file(word_cloud_name)  # 保存词云图片
+    plt.close('all')
     print(f'======== 第{num}张词云图生成 ========')
